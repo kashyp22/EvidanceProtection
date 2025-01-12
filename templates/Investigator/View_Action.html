@@ -1,0 +1,40 @@
+{% extends 'Investigator/InvestigatorHome.html' %}
+{% block body %}
+<body>
+    <h2>
+        View Take Action
+    </h2>
+    <br>
+    <br>
+    <main>
+       <form action="/myapp/" method="post">
+          <div class="table-responsive"> <!-- Makes the table responsive -->
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th>slno</th>
+                          <th>date</th>
+                          <th>Complaint</th>
+                          <th>Action</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for i in data %}
+                      <tr>
+                          <td>{{ forloop.counter }}</td>
+                          <td>{{ i.date }}</td>
+                          <td>{{ i.COMPLAINT.complaint }}</td>
+                          <td>{{ i.action }}</td>
+                          <td><a href="/myapp/Edit_Action_get/{{ i.COMPLAINT_id }}">Edit</a></td>
+                          <td><a href="/myapp/delete_action/{{ i.id }}">Delete</a></td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+       </form>
+    </main>
+</body>
+{% endblock %}

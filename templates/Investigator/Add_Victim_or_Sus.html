@@ -1,0 +1,126 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Add Victim/Suspect</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Add Victim or Suspect to Case:</h1>#}
+{#    <form method="POST" enctype="multipart/form-data" action="/myapp/Add_Victim_or_sus_post/">#}
+{#        {% csrf_token %}#}
+{##}
+{#        <input type="hidden" name="cid" value="{{ caseid }}">#}
+{##}
+{##}
+{#        <label for="name">Name:</label>#}
+{#        <input type="text" id="name" name="name" required><br>#}
+{##}
+{#        <label for="email">Email:</label>#}
+{#        <input type="email" id="email" name="email"><br>#}
+{##}
+{#        <label for="place">Place:</label>#}
+{#        <input type="text" id="place" name="place" required><br>#}
+{##}
+{#        <label for="city">City:</label>#}
+{#        <input type="text" id="city" name="city" required><br>#}
+{##}
+{#        <label for="pin">PIN:</label>#}
+{#        <input type="text" id="pin" name="pin" required><br>#}
+{##}
+{#        <label for="adharno">Aadhar Number:</label>#}
+{#        <input type="text" id="adharno" name="adharno" required><br>#}
+{##}
+{#        <label for="type">Type:</label>#}
+{#        <select id="type" name="type" required>#}
+{#            <option value="victim">Victim</option>#}
+{#            <option value="suspect">Suspect</option>#}
+{#        </select><br>#}
+{##}
+{#        <label for="photo">Photo:</label>#}
+{#        <input type="file" id="photo" name="photo"><br>#}
+{##}
+{#        <button type="submit" name="btn1" value="Add">Add</button>#}
+{#        <button type="submit" name="btn1" value="Add_another">Add Another Victim or Suspect</button>#}
+{#    </form>#}
+{#</body>#}
+{#</html>#}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Victim/Suspect</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Add Victim or Suspect to Case</h1>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data" action="/myapp/Add_Victim_or_sus_post/">
+                    {% csrf_token %}
+                    <input type="hidden" name="cid" value="{{ caseid }}">
+
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="place">Place:</label>
+                        <input type="text" id="place" name="place" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pin">PIN:</label>
+                        <input type="text" id="pin" name="pin" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adharno">Aadhar Number:</label>
+                        <input type="text" id="adharno" name="adharno" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Type:</label>
+                        <select id="type" name="type" class="form-control" required>
+                            <option value="victim">Victim</option>
+                            <option value="suspect">Suspect</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photo">Photo:</label>
+                        <input type="file" id="photo" name="photo" class="form-control-file">
+                    </div>
+
+                    <button type="submit" name="btn1" value="Add" class="btn btn-primary">Add</button>
+                    <button type="submit" name="btn1" value="Add_another" class="btn btn-secondary">Add Another Victim or Suspect</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

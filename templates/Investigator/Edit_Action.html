@@ -1,0 +1,34 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{% extends 'Investigator/InvestigatorHome.html' %}
+{% block body %}
+<body>
+    <h2>
+        Edit Action
+    </h2>
+    <br>
+    <br>
+    <main>
+       <form action="/myapp/Edit_Action_post/" method="post">
+           {% csrf_token %}
+           <div>
+                <input type="hidden" name="aid" value="{{ data.id }}"/>
+{#                <input type="text" name="reply" class="form-control" required/>#}
+               <textarea name="action" class="form-control">{{ data.action }}</textarea>
+               <br>
+            </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+            <button type="submit" class="btn btn-primary">delete</button>
+        </div>
+       </form>
+    </main>
+
+
+</body>
+{% endblock %}
+{#</html>#}

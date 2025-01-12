@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% extends 'Admin/Admin_Home.html' %}
+{% block body %}
+<body>
+    <h2>
+        Send Complaint Reply
+    </h2>
+    <br>
+    <br>
+    <main>
+       <form action="/myapp/SendReply_post/" method="post">
+           {% csrf_token %}
+           <div>
+                <input type="hidden" name="id" value="{{ id }}"/>
+{#                <input type="text" name="reply" class="form-control" required/>#}
+               <textarea name="reply" class="form-control"></textarea>
+               <br>
+            </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Send Reply</button>
+        </div>
+       </form>
+    </main>
+
+
+</body>
+{% endblock %}
+</html>

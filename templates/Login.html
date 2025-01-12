@@ -1,0 +1,160 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Login Page</title>#}
+{#    <link rel="stylesheet" href="/static/Login/login.css">#}
+{#</head>#}
+{#<body>#}
+{#    <div class="container">#}
+{#        <div class="login-box">#}
+{#            <h2>Login Page</h2>#}
+{#            <form action="/myapp/login_post/" method="post">#}
+{#                {% csrf_token %}#}
+{#                <div class="textbox">#}
+{#                    <input type="text" placeholder="Username" name="username" required>#}
+{#                </div>#}
+{#                <div class="textbox">#}
+{#                    <input type="password" placeholder="Password" name="password" required>#}
+{#                </div>#}
+{#                <button class="btn" type="submit">Login</button>#}
+{##}
+{#            </form>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+
+    <style>
+{#        body{#}
+{#            background-image: url('/static/Home/assets/images/ab2.jpg');#}
+{#            background-repeat: no-repeat;#}
+{#            background-size:cover;#}
+{##}
+{#        }#}
+
+
+
+
+
+
+    </style>
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/Login/login.css">
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100">
+    <div class="container">
+        <div class="row ">
+            <div class="">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Login Page</h3>
+                        <form action="/myapp/login_post/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Login Page</title>#}
+{#    <!-- Bootstrap CSS -->#}
+{#    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <style>#}
+{#        body, html {#}
+{#            height: 100%;#}
+{#            margin: 0;#}
+{#            display: flex;#}
+{#            align-items: center;#}
+{#            justify-content: center;#}
+{#            background-image: url('/static/Home/assets/images/ab2.jpg'); /* Adjust the path as needed */#}
+{#            background-size: cover;#}
+{#            background-position: cover;#}
+{#            background-repeat: no-repeat;#}
+{#        }#}
+{#        .login-box {#}
+{#            background-color: rgba(255, 255, 255, 0.85);#}
+{#            padding: 30px;#}
+{#            border-radius: 8px;#}
+{#            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);#}
+{#            max-width: 600px;#}
+{#            width: 100%;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <div class="login-box">#}
+{#        <h3 class="text-center mb-4">Login Page</h3>#}
+{#        <form action="/myapp/login_post/" method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="username">Username</label>#}
+{#                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="password">Password</label>#}
+{#                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>#}
+{#            </div>#}
+{#            <button type="submit" class="btn btn-primary btn-block">Login</button>#}
+{#        </form>#}
+{#    </div>#}
+{##}
+{#    <!-- Bootstrap JS, Popper.js, and jQuery -->#}
+{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{##}

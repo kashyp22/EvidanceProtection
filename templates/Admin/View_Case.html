@@ -1,0 +1,81 @@
+
+
+
+
+{{% extends "Admin/Admin_Home.html" %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1 class="text-center">Case List</h1>
+    <form action="/myapp/" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <p>From Date:</p>
+                <input type="date" name="fromdate" class="form-control" required/>
+            </div>
+            <div class="col-md-6">
+                <p>To Date:</p>
+                <input type="date" name="todate" class="form-control" required/>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sl No</th>
+                    <th>Crime Type</th>
+                    <th>Summary</th>
+                    <th>Date Reported</th>
+                    <th>Date Occurred</th>
+                    <th>Place</th>
+                    <th>City</th>
+                    <th>District</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Status</th>
+                    <th>Arrest</th>
+                    <th>Charges</th>
+                    <th>Conviction</th>
+                    <th>Stolen Items</th>
+                    <th>Description</th>
+                    <th>FIR</th>
+                    <th>Investigator</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for case in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ case.crime_type }}</td>
+                    <td>{{ case.summary }}</td>
+                    <td>{{ case.date_reported }}</td>
+                    <td>{{ case.date_occured }}</td>
+                    <td>{{ case.place }}</td>
+                    <td>{{ case.city }}</td>
+                    <td>{{ case.district }}</td>
+                    <td>{{ case.state }}</td>
+                    <td>{{ case.country }}</td>
+                    <td>{{ case.status }}</td>
+                    <td>{{ case.arrest }}</td>
+                    <td>{{ case.charges }}</td>
+                    <td>{{ case.conviction }}</td>
+                    <td>{{ case.stolen_items }}</td>
+                    <td class="description">{{ case.description }}</td>
+                    <td>{{ case.fir }}</td>
+                    <td>{{ case.INVESTIGATOR.name }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="18" style="text-align: center;">No cases found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

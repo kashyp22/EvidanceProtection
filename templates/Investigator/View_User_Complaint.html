@@ -1,0 +1,62 @@
+
+{% extends "Investigator/InvestigatorHome.html" %}
+{% block body %}
+
+
+<form>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>User Complaints</h3>
+            </div>
+            <div class="card-body">
+                {% if complaints %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sl no</th>
+                                <th scope="col">date_reported</th>
+                                <th scope="col">date_occured</th>
+                                <th>User</th>
+                                <th scope="col">Address</th>
+                                <th>Complaint</th>
+                                <th scope="col">description</th>
+                                <th scope="col">status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for complaint in complaints %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ complaint.date_reported }}</td>
+                                    <td>{{ complaint.date_occured }}</td>
+                                    <td>{{ complaint.USER.name }}</td>
+                                    <td>{{ complaint.place }}<br>{{ complaint.city }}<br>{{ complaint.pin }}<br>{{ complaint.post }}<br>{{ complaint.district }}<br>{{ complaint.state }}<br>{{ complaint.country }}</td>
+                                    <td>{{ complaint.complaint }}</td>
+                                    <td>{{ complaint.description }}</td>
+                                    <td>{{ complaint.status }}</td>
+                                    <td><a href="/myapp/accept_complaint/{{ complaint.id }}#about" class="btn btn-info">accep</a></td>
+                                    <td><a href="/myapp/reject_complaint/{{ complaint.id }}#about" class="btn btn-danger">decline</a></td>
+
+
+
+{#                                    <td><a href="/myapp/Take_Action_get/{{ complaint.id }}#about" class="btn btn-info">Take Action</a> </td>#}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No complaints found.</p>
+                {% endif %}
+            </div>
+{#            <div class="card-footer">#}
+{#                <a href="" class="btn btn-primary">File a New Complaint</a>#}
+{#                <a href="" class="btn btn-secondary">Back to Dashboard</a>#}
+{#            </div>#}
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

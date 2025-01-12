@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigator Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e6f2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px;
+        }
+
+        .main {
+            max-width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        p {
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="file"] {
+            box-shadow: 1px 1px 1px 1px #644b0b;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #55430b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="investigatorForm" action="/myapp/Edit_Investigator_post/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="main">
+            <div class="Heading">
+                <h1>Investigator Signup</h1>
+            </div>
+
+            <input type="hidden" value="{{ data.id }}"  name="iid">
+
+
+            <p>Name</p>
+            <input type="text" name="name" value="{{ data.name }}" required>
+            <div class="error" id="nameError"></div>
+
+            <p>Email</p>
+            <input type="email" name="email" value="{{ data.email }}" required>
+            <div class="error" id="emailError"></div>
+
+            <p>Phone</p>
+            <input type="number" name="phone" value="{{ data.phone }}" required>
+            <div class="error" id="phoneError"></div>
+
+            <p>Qualification</p>
+            <input type="text" name="qualification" value="{{ data.qualification }}" required>
+            <div class="error" id="qualificationError"></div>
+
+            <p>Place</p>
+            <input type="text" name="place" value="{{ data.place }}" required>
+            <div class="error" id="placeError"></div>
+
+            <p>City</p>
+            <input type="text" name="city" value="{{ data.city }}" required>
+            <div class="error" id="cityError"></div>
+
+            <p>PIN</p>
+            <input type="text" name="pin" value="{{ data.pin }}" required>
+            <div class="error" id="pinError"></div>
+
+            <p>Aadhar Number</p>
+            <input type="text" name="adharno" value="{{ data.adharno }}" required>
+            <div class="error" id="adharnoError"></div>
+
+            <p>Photo</p>
+            <input type="file" name="photo" >
+            <img src="{{ data.photo }}" width="100px" height="100px">
+
+            <div class="error" id="photoError"></div>
+
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('investigatorForm').addEventListener('submit', function(event) {
+            var valid = true;
+
+            // Validate name
+            if (document.getElementsByName('name')[0].value.trim() === '') {
+                document.getElementById('nameError').innerHTML = 'Please enter your name';
+                valid = false;
+            } else {
+                document.getElementById('nameError').innerHTML = '';
+            }
+
+            // Validate email
+            if (document.getElementsByName('email')[0].value.trim() === '') {
+                document.getElementById('emailError').innerHTML = 'Please enter your email';
+                valid = false;
+            } else {
+                document.getElementById('emailError').innerHTML = '';
+            }
+
+            // Validate phone
+            if (document.getElementsByName('phone')[0].value.trim() === '') {
+                document.getElementById('phoneError').innerHTML = 'Please enter your phone number';
+                valid = false;
+            } else {
+                document.getElementById('phoneError').innerHTML = '';
+            }
+
+            // Validate qualification
+            if (document.getElementsByName('qualification')[0].value.trim() === '') {
+                document.getElementById('qualificationError').innerHTML = 'Please enter your qualification';
+                valid = false;
+            } else {
+                document.getElementById('qualificationError').innerHTML = '';
+            }
+
+            // Validate place
+            if (document.getElementsByName('place')[0].value.trim() === '') {
+                document.getElementById('placeError').innerHTML = 'Please enter your place';
+                valid = false;
+            } else {
+                document.getElementById('placeError').innerHTML = '';
+            }
+
+            // Validate city
+            if (document.getElementsByName('city')[0].value.trim() === '') {
+                document.getElementById('cityError').innerHTML = 'Please enter your city';
+                valid = false;
+            } else {
+                document.getElementById('cityError').innerHTML = '';
+            }
+
+            // Validate PIN
+            if (document.getElementsByName('pin')[0].value.trim() === '') {
+                document.getElementById('pinError').innerHTML = 'Please enter your PIN';
+                valid = false;
+            } else {
+                document.getElementById('pinError').innerHTML = '';
+            }
+
+            // Validate Aadhar number
+            if (document.getElementsByName('adharno')[0].value.trim() === '') {
+                document.getElementById('adharnoError').innerHTML = 'Please enter your Aadhar number';
+                valid = false;
+            } else {
+                document.getElementById('adharnoError').innerHTML = '';
+            }
+
+            // Validate photo
+{#            if (document.getElementsByName('photo')[0].value.trim() === '') {#}
+{#                document.getElementById('photoError').innerHTML = 'Please upload a photo';#}
+{#                valid = false;#}
+{#            } else {#}
+{#                document.getElementById('photoError').innerHTML = '';#}
+{#            }#}
+
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+{##}
+{##}
+{#{% extends "Admin/Admin_Home.html" %}#}
+{#{% block body %}#}
+{##}
+{##}
+{#<form action="" class="form-control">#}
+{#        <table class="table table-bordered">#}
+{#                <tr>#}
+{#                    <th>ID</th>#}
+{#                    <th>Crime Type</th>#}
+{#                    <th>Summary</th>#}
+{#                    <th>narration</th>#}
+{#                    <th>date_occured</th>#}
+{#                    <th>Date Reported</th>#}
+{#                    <th>Address</th>#}
+{#                    <th>description</th>#}
+{#                    <th>status</th>#}
+{#                    <th>arrest</th>#}
+{#                    <th>charges</th>#}
+{#                    <th>conviction</th>#}
+{#                    <th>stolen_items</th>#}
+{#                    <th>file</th>#}
+{#                    <th>fir</th>#}
+{#                    <th>INVESTIGATOR</th>#}
+{#                    <th>Victim and Suspects</th>#}
+{#                </tr>#}
+{##}
+{##}
+{#                {% for case in data %}#}
+{#                <tr>#}
+{#                    <td>{{ forloop.counter }}</td>#}
+{#                    <td>{{ case.crime_type }}</td>#}
+{#                    <td>{{ case.summary }}</td>#}
+{#                    <td>{{ case.narration }}</td>#}
+{#                    <td>{{ case.date_reported }}</td>#}
+{#                    <td>{{ case.date_occured }}</td>#}
+{#                    <td>{{ case.place }},{{ case.city }},{{ case.pin }},{{ case.post }},{{ case.district }},{{ case.state }},{{ case.country }}</td>#}
+{#                    <td>{{ case.description }}</td>#}
+{#                    <td>{{ case.status }}</td>#}
+{#                    <td>{{ case.arrest }}</td>#}
+{#                    <td>{{ case.charges }}</td>#}
+{#                    <td>{{ case.conviction }}</td>#}
+{#                    <td>{{ case.stolen_items }}</td>#}
+{#                    <td><a href="">File</a></td>#}
+{#                    <td><a href="">fir</a></td>#}
+{#                    <td>{{ case.INVESTIGATOR.name }}</td>#}
+{#                <td>#}
+{#                    <a href="/myapp/View_Victim/{{ case.id }}" class="btn btn-view">Victim and Suspects</a>#}
+{#                </td>#}
+{##}
+{#                <td><a href="/myapp/Edit_Case_get/{{ case.id }}">Edit</a></td>#}
+{#                <td><a href="/myapp/Delete_Case/{{ case.id }}">Delete</a></td>#}
+{#                </tr>#}
+{#                {% empty %}#}
+{#                <tr>#}
+{#                    <td colspan="8">No cases found</td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{##}
+{#        </table>#}
+{##}
+{#</form>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends "Investigator/InvestigatorHome.html" %}
+{% block body %}
+
+<div class="container mt-2">
+    <h2 class="text-center mb-4">Case Records</h2>
+
+    <form action="" class="form-control">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Crime Type</th>
+                        <th>Summary</th>
+                        <th>Narration</th>
+                        <th>Date Occurred</th>
+                        <th>Date Reported</th>
+                        <th>Address</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Arrest</th>
+                        <th>Charges</th>
+                        <th>Conviction</th>
+                        <th>Stolen Items</th>
+                        <th>File</th>
+                        <th>FIR</th>
+                        <th>Investigator</th>
+                        <th>Victim and Suspects</th>
+                        <th>Actions</th>
+                        <th>Add Evidance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for case in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ case.crime_type }}</td>
+                        <td>{{ case.summary }}</td>
+                        <td>{{ case.narration }}</td>
+                        <td>{{ case.date_occured }}</td>
+                        <td>{{ case.date_reported }}</td>
+                        <td>{{ case.place }}, {{ case.city }}, {{ case.pin }}, {{ case.post }}, {{ case.district }}, {{ case.state }}, {{ case.country }}</td>
+                        <td>{{ case.description }}</td>
+                        <td>{{ case.status }}</td>
+                        <td>{{ case.arrest }}</td>
+                        <td>{{ case.charges }}</td>
+                        <td>{{ case.conviction }}</td>
+                        <td>{{ case.stolen_items }}</td>
+                        <td><a href="{{ case.file }}" class="btn btn-link">File</a></td>
+                        <td><a href="{{ case.fir   }}" class="btn btn-link">FIR</a></td>
+                        <td>{{ case.INVESTIGATOR.name }}</td>
+                        <td>
+                            <a href="/myapp/View_Victim/{{ case.id }}" class="btn btn-primary btn-sm">Victim</a>
+                            <br>
+                            <br>
+                            <a href="/myapp/View_Suspect/{{ case.id }}" class="btn btn-primary btn-sm">Suspects</a>
+                        </td>
+                        <td>
+                            <a href="/myapp/Edit_Case_get/{{ case.id }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/myapp/Delete_Case/{{ case.id }}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+
+                        <td><a href="/myapp/Investigator_View_Complaints/{{ case.id }}" class="btn btn-success">Add Evidance</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="18" class="text-center">No cases found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

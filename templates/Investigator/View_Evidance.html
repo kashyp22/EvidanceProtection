@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Evidence</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f7f9fb, #e3e7ec);
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            text-align: center;
+        }
+        th {
+            background-color: #3a3f51;
+            color: white;
+        }
+        .btn-view {
+            background-color: #3a3f51;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>View Evidence</h2>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Case</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Date Collected</th>
+                    <th>Collected By</th>
+                    <th>Place</th>
+                    <th>Landmark</th>
+                    <th>Storage Location</th>
+                    <th>Filename</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evidence in evidence_list %}
+                <tr>
+                    <td>{{ evidence.id }}</td>
+                    <td>{{ evidence.CASE.case_name }}</td>
+                    <td>{{ evidence.type }}</td>
+                    <td>{{ evidence.description }}</td>
+                    <td>{{ evidence.date_collected }}</td>
+                    <td>{{ evidence.collected_by }}</td>
+                    <td>{{ evidence.place }}</td>
+                    <td>{{ evidence.landmark }}</td>
+                    <td>{{ evidence.storage_location }}</td>
+                    <td>{{ evidence.filename }}</td>
+                    <td>
+                        <a href="{% url 'evidence_detail' evidence.id %}" class="btn-view">View</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="11">No evidence found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

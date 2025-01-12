@@ -1,0 +1,78 @@
+
+{% extends "Admin/Admin_Home.html" %}
+{% block body %}
+
+{#        <form action="/myapp/ViewComplaint_post/" method="post">#}
+{#               {% csrf_token %}#}
+{#               <p>from-date</p>#}
+{#                    <input type="date" name="fromdate" class="form-control" required/>#}
+{#            <br>#}
+{#                <p>to-date</p>#}
+{#                    <input type="date" name="todate" class="form-control" required/>#}
+{#            <br>#}
+{#               <button type="submit" class="btn btn-primary">search</button>#}
+ <h1 class="text-center mb-4">Complaints List</h1>
+    <div class="row mb-4">
+            <div class="col-md-4">
+                <form action="" method="get">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+{#        col-md-4 offset-md-4#}
+            <div class="col-md-5 offset-md-3">
+                <form action="" method="get">
+                    <div class="input-group">
+                        <label for="fromdate" class="mr-3">From Date:</label>
+                            <input type="date" name="fromdate" class="form-control" required/>
+                                <label for="todate" class="mx-2">To Date:</label>
+                            <input type="date" name="todate" class="form-control" required/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+<br>
+<br>
+    <table class="table table-bordered" border="2">
+
+            <tr class="table-primary">
+                <th>Sl no</th>
+                <th>Date</th>
+                <th>User Name</th>
+                <th>Complaint</th>
+                <th>status</th>
+                <th>reply</th>
+
+            </tr>
+
+        {% for i in data %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.USER.name }}</td>
+                <td>{{ i.complaint }}</td>
+                <td>{{ i.status }}</td>
+
+                <td>{% if i.status == 'pending' %}<a class="btn btn-info" href="/myapp/SendReply/{{ i.id }}#about">reply</a>{% else %}{{ i.reply }}{% endif %}</td>
+    {#            <td><a>reject</a></td>#}
+            </tr>
+        {% endfor %}
+        </table>
+
+        </form>
+
+{% endblock %}

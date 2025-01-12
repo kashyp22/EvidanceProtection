@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Case</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4f8, #d9e6f2);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #55430b;
+            border-color: #55430b;
+        }
+        .btn-primary:hover {
+            background-color: #402e07;
+            border-color: #402e07;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="text-center">Add Case</h2>
+
+        <form action="/myapp/ADD_Case_Post/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Crime Type -->
+            <div class="form-group">
+                <label for="crime_type">Crime Type</label>
+                <input type="text" name="crime_type" class="form-control" required>
+            </div>
+
+            <!-- Summary -->
+            <div class="form-group">
+                <label for="summary">Summary</label>
+                <textarea name="summary" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <!-- Narration -->
+            <div class="form-group">
+                <label for="narration">Narration</label>
+                <textarea name="narration" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <!-- Date Reported -->
+            <div class="form-group">
+                <label for="date_reported">Date Reported</label>
+                <input type="date" name="date_reported" class="form-control" required>
+            </div>
+
+            <!-- Date Occurred -->
+            <div class="form-group">
+                <label for="date_occured">Date Occurred</label>
+                <input type="date" name="date_occured" class="form-control" required>
+            </div>
+
+            <!-- Location Details -->
+            <div class="form-group">
+                <label for="place">Place</label>
+                <input type="text" name="place" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" name="city" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pin">PIN</label>
+                <input type="text" name="pin" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="post">Post</label>
+                <input type="text" name="post" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" name="district" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" name="state" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" name="country" class="form-control" required>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <!-- Status -->
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" name="status" class="form-control" required>
+            </div>
+
+            <!-- Arrest -->
+            <div class="form-group">
+                <label for="arrest">Arrest</label>
+                <input type="text" name="arrest" class="form-control" required>
+            </div>
+
+            <!-- Charges -->
+            <div class="form-group">
+                <label for="charges">Charges</label>
+                <input type="text" name="charges" class="form-control" required>
+            </div>
+
+            <!-- Conviction -->
+            <div class="form-group">
+                <label for="conviction">Conviction</label>
+                <input type="text" name="conviction" class="form-control" required>
+            </div>
+
+            <!-- Stolen Items -->
+            <div class="form-group">
+                <label for="stolen_items">Stolen Items</label>
+                <input type="text" name="stolen_items" class="form-control">
+            </div>
+
+            <!-- File Upload -->
+            <div class="form-group">
+                <label for="file">Upload File</label>
+                <input type="file" name="file" class="form-control">
+            </div>
+
+            <!-- FIR -->
+            <div class="form-group">
+                <label for="file">Fir File Upload</label>
+               <input type="file" name="fir" class="form-control">
+            </div>
+
+
+            <div>
+                <label>Victim or Suspect</label>
+               <select name="Vors" class="form-control" required>
+                   <option value="">Select</option>
+                   <option value="Yes">Yes</option>
+                   <option value="No">No</option>
+               </select>
+
+
+            </div>
+
+
+            <!-- Investigator -->
+            <div class="form-group">
+                <label for="investigator">Investigator</label>
+                <select name="investigator" class="form-control" required>
+                    <option value="">Select Investigator</option>
+                    {% for investigator in data %}
+                        <option value="{{ investigator.id }}">{{ investigator.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+
+
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <input type="submit" value="Add Case" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends "Admin/Admin_Home.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Feedback List</h1>
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <form action="" method="get">
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 offset-md-4">
+                <form action="" method="get">
+                    <div class="input-group">
+                        <label for="fromdate" class="mr-2">From Date:</label>
+                            <input type="date" name="fromdate" class="form-control" required/>
+                                <label for="todate" class="mx-2">To Date:</label>
+                            <input type="date" name="todate" class="form-control" required/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <caption class="text-center">List of feedback</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="text-nowrap">Sl No</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Feedback</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {% for complaint in data %}
+
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ complaint.date }}</td>
+                        <td>{{ complaint.USER.name }}</td>
+                        <td>{{ complaint.feedback }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No feedback found.</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "Investigator/InvestigatorHome.html" %}
+{% block body %}
+
+        <form action="/myapp/ViewComplaint_post/" method="post">
+               {% csrf_token %}
+               <p>from-date</p>
+                    <input type="date" name="fromdate" class="form-control" required/>
+            <br>
+                <p>to-date</p>
+                    <input type="date" name="todate" class="form-control" required/>
+            <br>
+               <button type="submit" class="btn btn-primary">search</button>
+
+
+<br>
+<br>
+    <table class="table table-bordered" border="2">
+
+            <tr class="table-primary">
+                <th scope="col">Sl no</th>
+                                <th scope="col">date_reported</th>
+                                <th scope="col">date_occured</th>
+                                <th scope="col">Address</th>
+                                <th>Complaint</th>
+                                <th scope="col">description</th>
+                                <th scope="col">status</th>
+{#                                <th>Action</th>#}
+{#                <th>reply</th>#}
+
+            </tr>
+
+        {% for complaint in data %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                                    <td>{{ complaint.date_reported }}</td>
+                                    <td>{{ complaint.date_occured }}</td>
+                                    <td>{{ complaint.place }}<br>{{ complaint.city }}<br>{{ complaint.pin }}<br>{{ complaint.post }}<br>{{ complaint.district }}<br>{{ complaint.state }}<br>{{ complaint.country }}</td>
+                                    <td>{{ complaint.complaint }}</td>
+                                    <td>{{ complaint.description }}</td>
+                                    <td>{{ complaint.status }}</td>
+{#                <td><a href="" class="btn btn-success">take action</a></td>#}
+{#                <td>{% if i.status == 'pending' %}<a class="btn btn-info" href="/myapp/SendReply/{{ i.id }}#about">reply</a>{% else %}{{ i.reply }}{% endif %}</td>#}
+                {#            <td><a>reject</a></td>#}
+            </tr>
+
+        {% endfor %}
+        </table>
+
+        </form>
+
+{% endblock %}
